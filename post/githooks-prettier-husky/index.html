@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title> Enforce linters and code formatters in an Angular Project using Git Hooks and Husky &middot; Another Imposter Programmer </title>
+
+
+<link rel="stylesheet" href="css/slim.css">
+<link rel="stylesheet" href="css/highlight.min.css">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link href="" rel="alternate" type="application/rss+xml" title="Another Imposter Programmer" />
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+  <h1 class="site-title"><a href="">Another Imposter Programmer</a></h1>
+  <p class="site-tagline">This development blog will contain my learnings as I try to be less of an &#39;Imposter Programmer&#39; while trying to improve my craft and code better with focus on technologies such as Flutter and Angular.</p>
+  <div class="nav">
+    <a class="nav-btn" href="#">
+      <span class="ci ci-burger"></span>
+    </a>
+    <ul class="nav-list">
+       
+	  <li class="spacer">&ac;</li>
+
+      <li><a href="https://github.com/jvpabalan">Github</a></li>  
+    </ul>
+  </div>
+</div>
+    <div class="content">
+      <div class="posts">
+        <div class="post">
+          <h2 class="post-title"><a href="/post/githooks-prettier-husky/">Enforce linters and code formatters in an Angular Project using Git Hooks and Husky</a></h2>
+          <span class="post-date">Jun 15, 2020 </span>
+          <div class="post-content">
+            <h2 id="git-hooks">Git Hooks</h2>
+<p>I&rsquo;ve been exploring Git Hooks lately and found amazing use cases that I can include in my projects. Simply put, <a href="https://githooks.com/">Git Hooks</a> allows execution of scripts before/after git events such as commit or push.</p>
+<p>This allows us write scripts that enforce coding guidelines such as:</p>
+<ol>
+<li>Commit message standards are followed before commits.</li>
+<li>Make sure linters are ran and not failing before commits</li>
+<li>Run code formatters after commits</li>
+</ol>
+<p>Here we will see how we can enfore these in an Angular project using Husky</p>
+<h2 id="husky">Husky</h2>
+<p><a href="https://github.com/typicode/husky">Husky</a> is a popular library that makes integrating git hooks to our projects really easy.</p>
+<p><strong>Step 1:</strong> install husky using NPM.</p>
+<pre><code>npm install --save-dev husky
+</code></pre>
+<p><strong>Step 2:</strong> Add this at the bottom of your package.json</p>
+<pre><code>&quot;husky&quot;: {
+    &quot;hooks&quot;: {
+        &quot;pre-commit&quot;: &quot;npm run lint&quot;
+    }
+}
+</code></pre>
+<p>In this example we are using the pre-commit hook to run angular&rsquo;s lint command using NPM but you can modify this to run your own scripts if you want! and <strong>we are done!</strong></p>
+<p>If you actually try to commit your changes with lint errors, it will fail and give the error message below:</p>
+<p><img src="/img/lint-fail.png" alt="Lint fail on commit"></p>
+<h2 id="prettier">Prettier</h2>
+<p><a href="https://prettier.io/">Prettier</a> is an opinionated code formatting tool. Using a formatting tool like prettier guarantees that the code is uniform accross teams and developers in your project.</p>
+<p><strong>Step 1:</strong> install prettier using NPM.</p>
+<pre><code>npm install --save-dev prettier --save-exact
+</code></pre>
+<p>Using <code>--save-exact</code> makes sure that our config doesn&rsquo;t get modified in case we update our prettier version.</p>
+<p><strong>Step 2:</strong> Install pretty-quick</p>
+<pre><code>npm install --save-dev pretty-quick
+</code></pre>
+<p><code>pretty-quick</code> allows us to run prettier using command line with useful options like making sure it only formats our staged files. This is to make sure we dont bloat our commits by
+formatting files we didn&rsquo;t touch.</p>
+<p><strong>Step 3:</strong> Add the following key to your <code>package.json</code> under <code>scripts</code> section</p>
+<pre><code>'pretty-quick': 'pretty-quick'
+</code></pre>
+<p><strong>Step 4:</strong> Configure husky to run prettier before commits</p>
+<pre><code>&quot;husky&quot;: {
+    &quot;hooks&quot;: {
+        &quot;pre-commit&quot;: &quot;npm run lint &amp;&amp; pretty-quick --staged&quot;
+    }
+}
+</code></pre>
+<h2 id="prettier-configuration">Prettier Configuration</h2>
+<p>There are a couple of ways to configure prettier in our project:</p>
+<ul>
+<li>Adding <code>.prettierrc</code> in the root of the project</li>
+<li>Adding a <code>prettier</code> section in <code>package.json</code></li>
+</ul>
+<p>This is a sample config you can use but feel free to checkout <a href="https://prettier.io/">prettier.io</a> for more</p>
+<pre><code>&quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 100,
+    &quot;semi&quot;: true,
+    &quot;bracketSpacing&quot;: true,
+    &quot;arrowParens&quot;: &quot;always&quot;
+},
+</code></pre>
+<h2 id="vscode-integration-with-prettier">VSCode Integration with Prettier</h2>
+<p>With VSCode we can also install an extension to integrate prettier. This will give IDE warnings when we violate prettier rules or format our document automatically on save!
+I recommend you install this for extra measure.</p>
+<ul>
+<li>Go to Extensions and search for &lsquo;Prettier&rsquo; and install</li>
+<li>Run prettier on save <code>Settings -&gt; Text Editor -&gt; Formatting -&gt; Format On Save = true</code></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>With all this configured, our project is now 1 step ahead on making sure coding guidelines are followed and we maintain a uniform format.
+These can be prevent problems such as opening old files and see tons of warning with Lint or you only change a single line in a file but it resulted to a bigger change because of fomatting fixes!</p>
+<p>I hope this can be helpful for you as it was for me.</p>
+
+          </div>
+        </div>
+        <div class="pagination"> 
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+  
+  <p>Powered by <a href="https://gohugo.io">Hugo</a>. This theme—Slim—is open sourced on <a href="https://github.com/zhe/hugo-theme-slim">Github</a>.</p>
+  
+</div>
+
+  </div>
+  <script src="js/slim.js"></script>
+  <script src="js/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+</body>
+
+</html>

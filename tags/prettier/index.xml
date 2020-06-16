@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>prettier on Another Imposter Programmer</title>
+    <link>/tags/prettier/</link>
+    <description>Recent content in prettier on Another Imposter Programmer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 15 Jun 2020 02:13:50 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/prettier/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Enforce linters and code formatters in an Angular Project using Git Hooks and Husky</title>
+      <link>/post/githooks-prettier-husky/</link>
+      <pubDate>Mon, 15 Jun 2020 02:13:50 +0000</pubDate>
+      
+      <guid>/post/githooks-prettier-husky/</guid>
+      <description>Git Hooks I&amp;rsquo;ve been exploring Git Hooks lately and found amazing use cases that I can include in my projects. Simply put, Git Hooks allows execution of scripts before/after git events such as commit or push.
+This allows us write scripts that enforce coding guidelines such as:
+ Commit message standards are followed before commits. Make sure linters are ran and not failing before commits Run code formatters after commits  Here we will see how we can enfore these in an Angular project using Husky</description>
+    </item>
+    
+  </channel>
+</rss>
