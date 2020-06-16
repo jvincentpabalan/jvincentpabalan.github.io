@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Another Imposter Programmer</title>
-    <link>/tags/</link>
+    <link>https://jvincentpabalan.github.io/tags/</link>
     <description>Recent content in Tags on Another Imposter Programmer</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 15 Jun 2020 02:13:50 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jvincentpabalan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>angular</title>
-      <link>/tags/angular/</link>
+      <link>https://jvincentpabalan.github.io/tags/angular/</link>
       <pubDate>Mon, 15 Jun 2020 02:13:50 +0000</pubDate>
       
-      <guid>/tags/angular/</guid>
+      <guid>https://jvincentpabalan.github.io/tags/angular/</guid>
       <description></description>
     </item>
     
     <item>
       <title>development</title>
-      <link>/tags/development/</link>
+      <link>https://jvincentpabalan.github.io/tags/development/</link>
       <pubDate>Mon, 15 Jun 2020 02:13:50 +0000</pubDate>
       
-      <guid>/tags/development/</guid>
+      <guid>https://jvincentpabalan.github.io/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>/tags/git/</link>
+      <link>https://jvincentpabalan.github.io/tags/git/</link>
       <pubDate>Mon, 15 Jun 2020 02:13:50 +0000</pubDate>
       
-      <guid>/tags/git/</guid>
+      <guid>https://jvincentpabalan.github.io/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>husky</title>
-      <link>/tags/husky/</link>
+      <link>https://jvincentpabalan.github.io/tags/husky/</link>
       <pubDate>Mon, 15 Jun 2020 02:13:50 +0000</pubDate>
       
-      <guid>/tags/husky/</guid>
+      <guid>https://jvincentpabalan.github.io/tags/husky/</guid>
       <description></description>
     </item>
     
     <item>
       <title>prettier</title>
-      <link>/tags/prettier/</link>
+      <link>https://jvincentpabalan.github.io/tags/prettier/</link>
       <pubDate>Mon, 15 Jun 2020 02:13:50 +0000</pubDate>
       
-      <guid>/tags/prettier/</guid>
+      <guid>https://jvincentpabalan.github.io/tags/prettier/</guid>
       <description></description>
     </item>
     
